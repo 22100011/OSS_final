@@ -141,7 +141,7 @@ const ModalData = ({ isOpen, onClose, onSubmit, initialData = {}, isUpdateMode }
               required
             />
           </label>
-          <br />
+          <br/>
 
           <label>
             GHI (calculated):
@@ -152,7 +152,7 @@ const ModalData = ({ isOpen, onClose, onSubmit, initialData = {}, isUpdateMode }
               readOnly // ghi는 값을 넣는게 아닌, 나머지 값을 통해 계산된 값이 들어감 
             />
           </label>
-          <br />
+          <br/>
 
           <button type="submit">{isUpdateMode ? 'Update' : 'Add'}</button>
           <button type="button" onClick={onClose}>
