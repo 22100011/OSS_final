@@ -11,7 +11,7 @@ const App = () => {
     <Router>
       <div>
         <Routes>
-          <Route path="/" element={<Navigate to="/data" />} />
+          <Route path="/" element={<Navigate to="/main" />} />
           <Route path="/data" element={<DataPage />} />
           <Route path="/main" element={<MainPage />} />
           <Route path="/map" element={<MapPage />} />

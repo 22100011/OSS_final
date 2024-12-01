@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MapPage from "../components/mapPage";
+
 
 const Add = () => {
   return (
@@ -11,6 +13,7 @@ const Add = () => {
       <Link to="/data">
         <button>Map Page</button>
       </Link>
+      <MapPage/>
     </div>
     
   );

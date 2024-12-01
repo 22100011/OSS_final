@@ -11,6 +11,7 @@ const Add = () => {
       <Link to="/map">
         <button>Map Page</button>
       </Link>
+      
     </div>
 
   );
