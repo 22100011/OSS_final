@@ -43,9 +43,9 @@ const ModalData = ({ isOpen, onClose, onSubmit, initialData = {}, isUpdateMode }
     setFormData(updatedFormData);
   };
 
-  // GHI 계산 함수
+  // GHI 계산하는 함수
   const calculateGHI = ({ undernourishment, child_stunting, child_wasting, child_mortality }) => {
-    // 각 필드 값이 비어있거나 0일 경우 기본값을 0으로 처리
+    // 필드 값이 0일 경우 기본값을 0으로 처리
     const u = parseFloat(undernourishment) || 0;
     const s = parseFloat(child_stunting) || 0;
     const w = parseFloat(child_wasting) || 0;
