@@ -6,7 +6,7 @@ const Add = () => {
     <div>
       <h1>Main Page</h1>
       <Link to="/data">
-        <button>Main Page</button>
+        <button>Data Page</button>
       </Link>
       <Link to="/map">
         <button>Map Page</button>
