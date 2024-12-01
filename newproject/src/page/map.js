@@ -11,7 +11,7 @@ const Add = () => {
         <button>Main Page</button>
       </Link>
       <Link to="/data">
-        <button>Map Page</button>
+        <button>Data Page</button>
       </Link>
       <MapPage/>
     </div>

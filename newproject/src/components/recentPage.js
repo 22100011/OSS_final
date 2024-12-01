@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 
 const App = () => {
-  const [categorizedData, setCategorizedData] = useState({
+  const [showRecentData, setshowRecentData] = useState({
     low: [],
     moderate: [],
     serious: [],
     alarming: [],
     extremelyAlarming: [],
   });
-
   // 데이터 가져오기 및 그룹화
   const getGHI = async () => {
     try {
       const response = await fetch('https://6743ce15b7464b1c2a65e803.mockapi.io/GHI');
       const data = await response.json();
 
-      // 데이터를 카테고리별로 그룹화
+      const dataForYear = data.filter((item) => item.year === 2012); // 이 값만 바꾸면 년도 최신으로 바꿀 수 있어
+      
       const groupedData = {
-        low: data.filter((item) => item.ghi < 10),
-        moderate: data.filter((item) => item.ghi >= 10 && item.ghi < 20),
-        serious: data.filter((item) => item.ghi >= 20 && item.ghi < 35),
-        alarming: data.filter((item) => item.ghi >= 35 && item.ghi < 50),
-        extremelyAlarming: data.filter((item) => item.ghi >= 50),
+        low:  dataForYear.filter((item) => item.ghi < 10),
+        moderate: dataForYear.filter((item) => item.ghi >= 10 && item.ghi < 20),
+        serious: dataForYear.filter((item) => item.ghi >= 20 && item.ghi < 35),
+        alarming: dataForYear.filter((item) => item.ghi >= 35 && item.ghi < 50),
+        extremelyAlarming: dataForYear.filter((item) => item.ghi >= 50),
       };
 
-      setCategorizedData(groupedData);
+      setshowRecentData(groupedData);
     } catch (error) {
       console.error('데이터를 가져오는 중 오류 발생:', error);
     }
@@ -48,7 +48,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {categorizedData.low.map((item) => (
+            {showRecentData.low.map((item) => (
               <tr key={item.id}>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.country}</td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.year}</td>
@@ -71,7 +71,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {categorizedData.moderate.map((item) => (
+            {showRecentData.moderate.map((item) => (
               <tr key={item.id}>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.country}</td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.year}</td>
@@ -82,7 +82,6 @@ const App = () => {
         </table>
       </section>
 
-     
       <section style={{ float: "left", margin: "20px" }}>
         <h2 style={{ color: "Goldenrod" }}>Serious (20.0 ~ 34.9)</h2>
         <table style={{ border: "1px solid black", borderCollapse: "collapse", width: "100%" }}>
@@ -94,7 +93,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {categorizedData.serious.map((item) => (
+            {showRecentData.serious.map((item) => (
               <tr key={item.id}>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.country}</td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.year}</td>
@@ -117,7 +116,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {categorizedData.alarming.map((item) => (
+            {showRecentData.alarming.map((item) => (
               <tr key={item.id}>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.country}</td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.year}</td>
@@ -140,7 +139,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {categorizedData.extremelyAlarming.map((item) => (
+            {showRecentData.extremelyAlarming.map((item) => (
               <tr key={item.id}>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.country}</td>
                 <td style={{ border: "1px solid black", padding: "8px" }}>{item.year}</td>
