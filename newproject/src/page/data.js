@@ -9,11 +9,14 @@ const Add = () => {
       <Link to="/main">
         <button>Main Page</button>
       </Link>
-      <Link to="/main">
+      <Link to="/map">
         <button>Map Page</button>
       </Link>
-      <Link to="/compare">
-        <button>Compare Page</button>
+      <Link to="/recent">
+        <button>Recent Page</button>
+      </Link>
+      <Link to="/crud">
+        <button>CRUD Page</button>
       </Link>
       <DataPage/>
     </div>

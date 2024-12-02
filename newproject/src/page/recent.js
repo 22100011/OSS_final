@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ComparePage from "../components/comparePage";
+import ShowPage from "../components/recentPage";
+
 
 const Add = () => {
   return (
     <div>
-      <h1>Compare Page</h1>
+      <h1>Data Page</h1>
       <Link to="/data">
-        <button>data Page</button>
+        <button>Data Page</button>
       </Link>
-      <ComparePage/>
+      <ShowPage/>
     </div>
     
   );

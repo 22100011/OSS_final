@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CRUDPage from "../components/crudPage";
 
 const Add = () => {
   return (
     <div>
-      <h1>Main Page</h1>
+      <h1>CRUD Page</h1>
       <Link to="/data">
-        <button>Data Page</button>
+        <button>data Page</button>
       </Link>
-      <Link to="/map">
-        <button>Map Page</button>
-      </Link>
-      
+      <CRUDPage/>
     </div>
-
+    
   );
 };
 
