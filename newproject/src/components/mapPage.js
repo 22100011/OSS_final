@@ -44,7 +44,6 @@ const MapComponent = () => {
                 options={mapOptions}
                 onLoad={(map) => (mapRef.current = map)} // 지도 로드 시 ref에 저장
             >
-                {/* 마커 추가 */}
                 {locations.map((location) => (
                     <MarkerF
                         key={location.id}

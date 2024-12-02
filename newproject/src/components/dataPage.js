@@ -17,7 +17,7 @@ const App = () => {
   };
 
   // 특정 연도로 필터링
-  const filterByYear = () => {
+  const filterByYear = () => { //year에 아무것도 적지 않았으면 그냥 다 출력해
     let filter = [];
     if (year === '') {
       filter = [...data];
@@ -77,6 +77,7 @@ const App = () => {
             <th style={{ border: "1px solid black", padding: "8px" }}>GHI</th>
             <th style={{ border: "1px solid black", padding: "8px" }}>Stunting</th>
             <th style={{ border: "1px solid black", padding: "8px" }}>Wasting</th>
+            <th style={{ border: "1px solid black", padding: "8px" }}>Undernourishment</th>
             <th style={{ border: "1px solid black", padding: "8px" }}>Mortality</th>
           </tr>
         </thead>
@@ -88,6 +89,7 @@ const App = () => {
               <td style={{ border: "1px solid black", padding: "8px" }}>{item.ghi}</td>
               <td style={{ border: "1px solid black", padding: "8px" }}>{item.child_stunting}</td>
               <td style={{ border: "1px solid black", padding: "8px" }}>{item.child_wasting}</td>
+              <td style={{ border: "1px solid black", padding: "8px" }}>{item.undernourishment}</td>
               <td style={{ border: "1px solid black", padding: "8px" }}>{item.child_mortality}</td>
             </tr>
           ))}
