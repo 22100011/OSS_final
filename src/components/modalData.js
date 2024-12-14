@@ -70,7 +70,7 @@ const ModalData = ({ isOpen, onClose, onSubmit, initialData = {}, isUpdateMode }
   return (
     <div className="modal_overlay" onClick={onClose}>
       <div className="modal_content" onClick={(e) => e.stopPropagation()}>
-        <h2>{isUpdateMode ? 'Update Record' : 'Add Record'}</h2>
+        <h2>{isUpdateMode ? 'UPDATE' : 'ADD'}</h2>
         <form onSubmit={handleSubmit}>
           <label>
             Country:
