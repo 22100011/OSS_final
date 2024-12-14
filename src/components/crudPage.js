@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ModalData from '../components/modalData';
+import "../css/crudPage.css"
 
 const App = () => {
   const [GHIData, setGHIData] = useState([]); // 전체 데이터
@@ -8,7 +9,6 @@ const App = () => {
   const [currentData, setCurrentData] = useState(null);
   const [isUpdateMode, setIsUpdateMode] = useState(false);
 
-  const [country, setCountry] = useState('');
 
   // 데이터 가져오기
   const fetchGHI = async () => {
@@ -16,7 +16,7 @@ const App = () => {
       const response = await fetch('https://6743ce15b7464b1c2a65e803.mockapi.io/GHI');
       const data = await response.json();
       setGHIData(data);
-      setFilteredData(data); // 초기에는 전체 데이터를 표시
+      setFilteredData(data);
     } catch (error) {
       console.error('데이터를 가져오는 중 오류 발생:', error);
     }
@@ -85,66 +85,52 @@ const App = () => {
     closeModal();
   };
 
-  // 국가 필터링
-  const filterByCountry = () => {
-    if (country === '') {
-      setFilteredData([...GHIData]); // 필터링 없이 전체 데이터
-    } else {
-      const filter = GHIData.filter((item) => item.country === country);
-      setFilteredData(filter); // 필터링된 데이터 설정
-    }
-  };
-
   useEffect(() => {
     fetchGHI();
   }, []);
 
   return (
-    <div>
-      <button onClick={() => openModal()}>추가</button>
 
-      <select
-        value={country}
-        onChange={(e) => setCountry(e.target.value)}>
-        <option value="">Select Country</option>
-        <option value="Romania">Romania</option>
-        <option value="India">India</option>
-        <option value="USA">USA</option>
-      </select>
-      <button onClick={filterByCountry}>적용</button>
+    <div className="container">
+      <button className='create_btn' onClick={() => openModal()}>Create</button>
 
-      <table style={{ border: "1px solid black", borderCollapse: "collapse", width: "100%", marginTop: "20px" }}>
+      <table className="data_table">
         <thead>
           <tr>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Country</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Year</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>GHI</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Stunting</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Wasting</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Undernourishment</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Mortality</th>
-            <th style={{ border: "1px solid black", padding: "8px" }}>Actions</th>
+            <th>Country</th>
+            <th>Year</th>
+            <th>GHI</th>
+            <th>Stunting</th>
+            <th>Wasting</th>
+            <th>Undernourishment</th>
+            <th>Mortality</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {filteredData.map((item) => (
             <tr key={item.id}>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.country}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.year}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.ghi}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.child_stunting}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.child_wasting}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.undernourishment}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>{item.child_mortality}</td>
-              <td style={{ border: "1px solid black", padding: "8px" }}>
-                <button onClick={() => openModal(item, true)}>수정</button>
-                <button onClick={() => deleteData(item.id)}>삭제</button>
+              <td>{item.country}</td>
+              <td>{item.year}</td>
+              <td>{item.ghi}</td>
+              <td>{item.child_stunting}</td>
+              <td>{item.child_wasting}</td>
+              <td>{item.undernourishment}</td>
+              <td>{item.child_mortality}</td>
+              <td>{item.latitude}</td>
+              <td>{item.longitude}</td>
+              <td>
+                <div className='edit_delete_btn'>
+                  <button className='edit_btn' onClick={() => openModal(item, true)}>Edit</button>
+                  <button className='delete_btn' onClick={() => deleteData(item.id)}>Delete</button>
+                </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-
       {isModalOpen && (
         <ModalData
           isOpen={isModalOpen}
@@ -155,6 +141,7 @@ const App = () => {
         />
       )}
     </div>
+
   );
 };
 
