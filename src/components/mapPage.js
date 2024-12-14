@@ -145,8 +145,8 @@ const MapComponent = () => {
                 {isModalOpen && selectedMarker && (
                     <div className="modal">
                         <div className="modal-content-home">
-                            <h2>Marker Details</h2>
-                            <p><strong>Country:</strong> {selectedMarker.country}</p>
+                            
+                            <h2><strong>Country:</strong> {selectedMarker.country}</h2>
                             <p><strong>Year:</strong> {selectedMarker.year}</p>
                             <p><strong>GHI:</strong> {selectedMarker.ghi}</p>
                             <p><strong>Stunting:</strong> {selectedMarker.child_stunting}%</p>
